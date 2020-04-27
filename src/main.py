@@ -23,21 +23,20 @@ def readSettings(settingsFile):
 	configuration.read(settingsFile)
 	if not configuration:
 		raise Exception("The settings file was not found!")
-	return configuration
+	return configuration._sections
 
 def main():
 	args = help()
 	settings = readSettings(args.settings)
 
 	if args.dataset in settings:
-		voc = FileManager.loadVocabularies()
-		ds = FileManager.readDataset(args.dataset)
+		voc = FileManager.loadVocabularies(settings["vocabulary"])
+		ds = FileManager.readDataset(settings[args.dataset])
 		results = Orchestrator.process(voc, ds)
-		FileManager.writeResults(results)
+		FileManager.writeResults(settings["results"], results)
 	else:
 		print("Dataset does not exist in the settings.ini")
 		help(show=True)
 		exit()
-
 
 main()

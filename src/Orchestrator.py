@@ -17,4 +17,4 @@ class Orchestrator():
 		return results
 
 	def ruledBased(vocabularies, dataset):
-		return {"note id": [("DIAGNOSTICO", "codeDD", "teste as", "12 15"), ("PROCEDIMIENTO", "codePP", "tasdadfeste as", "123 155")]}
+		return {"S0004-06142005000700014-1": [("DIAGNOSTICO", "n44.8", "teste as", "12 15"), ("PROCEDIMIENTO", "bw03zzz", "Rx tórax", "2163 2171")]}

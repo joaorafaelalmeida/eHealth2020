@@ -79,7 +79,7 @@ class FileManager():
 						outP.write("{}\t{}\n".format(noteID, code))
 					else:
 						print("BUG!")
-					outX.write("{}\t{}\t{}\t{}\t{}\n".format(noteID, obsType, code, term, span))
+					outX.write("{}\t{}\t{}\t{}\n".format(noteID, span, obsType, code))
 			outD.close()
 			outP.close()
 			outX.close()

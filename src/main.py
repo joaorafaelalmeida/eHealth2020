@@ -32,7 +32,7 @@ def main():
 	if args.dataset in settings:
 		voc = FileManager.loadVocabularies(settings["vocabulary"])
 		ds = FileManager.readDataset(settings[args.dataset])
-		results = Orchestrator.process(voc, ds)
+		results = Orchestrator.process(args.dataset, voc, ds, settings)
 		FileManager.writeResults(settings["results"], results)
 	else:
 		print("Dataset does not exist in the settings.ini")

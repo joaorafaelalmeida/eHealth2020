@@ -31,5 +31,8 @@ dev:
 	make run ds=dev \
 	evalute ds=dev m=rule-based
 
+dev-evaluate:
+	make evalute ds=dev m=rule-based
+
 test:
 	make run ds=test

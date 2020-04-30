@@ -3,6 +3,25 @@ import glob
 import os
 
 class FileManager():
+	def readGSX(gsFile):
+		"""
+		Reads the Task X goldstandard file into a dict
+		:param gsFile: location of the goldstandard file X
+		:return: The dict gs.
+			Format: {"term":"id"}
+		"""
+		gs = {}
+		with codecs.open(gsFile, 'r', encoding='utf8') as fp:
+			for line in fp:
+				line = line.strip().lower().split("\t")
+				term, code, obsType = line[3], line[2], line[1].upper()
+				if term not in gs:
+					gs[term] = {}
+				if (code, obsType) not in gs[term]:
+					gs[term][(code, obsType)] = 0
+				gs[term][(code, obsType)] += 1
+		return gs
+
 	def loadVocabularies(vocabulariesPaths):
 		"""
 		Loads the vocabularies into an dictionary
@@ -50,7 +69,7 @@ class FileManager():
 		file = file.replace("\n", " ").replace("’", "\'")
 		for ch in ['\\','\"','*','_','{','}','[',']','(',')','>','#','+',',','!','$',':',';']:
 				if ch in file:
-					file = file.replace(ch,"")
+					file = file.replace(ch," ")
 		#file = file.lower()
 		return file
 

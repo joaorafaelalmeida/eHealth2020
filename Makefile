@@ -24,6 +24,9 @@ train:
 	make run ds=train \
 	evalute ds=train m=rule-based
 
+train-evaluate:
+	make evalute ds=train m=rule-based
+
 dev:
 	make run ds=dev \
 	evalute ds=dev m=rule-based

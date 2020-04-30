@@ -131,3 +131,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+Evaluator/intermediate_gs_file.txt
+Evaluator/intermediate_predictions_file.txt

@@ -1,3 +1,5 @@
+from RuleBased import RuleBased
+
 class Orchestrator():
 	def process(vocabularies, dataset):
 		"""
@@ -17,4 +19,7 @@ class Orchestrator():
 		return results
 
 	def ruledBased(vocabularies, dataset):
-		return {"S0004-06142005000700014-1": [("DIAGNOSTICO", "n44.8", "teste as", "12 15"), ("PROCEDIMIENTO", "bw03zzz", "Rx tórax", "2163 2171")]}
+		results = RuleBased.process(vocabularies, dataset)
+		return results
+		#procce if diagnosito ou outro
+		#return {"S0004-06142005000700014-1": [("DIAGNOSTICO", "n44.8", "teste as", "12 15"), ("PROCEDIMIENTO", "bw03zzz", "Rx tórax", "2163 2171")]}

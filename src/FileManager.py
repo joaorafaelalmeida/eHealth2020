@@ -59,7 +59,7 @@ class FileManager():
 		Writes the results for the 3 sub-tasks
 		:param directory: Location to write the results. It aggregates by sub-tasks.
 		:param results: Dict with the annotation from all the methods developed. 
-			Format: {"Method A": {"note id": [(observation type", "code", "term", "span"), ...], ...}, ...}
+			Format: {"Method A": {"note id": [(observation type", "code", "span"), ...], ...}, ...}
 		"""
 		if not os.path.exists(directory["t1"]):
 			os.makedirs(directory["t1"])
@@ -72,14 +72,16 @@ class FileManager():
 			outP = open("{}{}_testP.tsv".format(directory["t2"], method), "w")
 			outX = open("{}{}_testX.tsv".format(directory["t3"], method), "w")
 			for noteID in results[method]:
-				for obsType, code, term, span in results[method][noteID]:
+				for obsType, code, span in results[method][noteID]:
 					if "DIAGNOSTICO" in obsType:
 						outD.write("{}\t{}\n".format(noteID, code))
 					elif "PROCEDIMIENTO" in obsType:
 						outP.write("{}\t{}\n".format(noteID, code))
 					else:
+						print(obsType)
 						print("BUG!")
-					outX.write("{}\t{}\t{}\t{}\n".format(noteID, span, obsType, code))
+					if span != None:
+						outX.write("{}\t{}\t{}\t{}\n".format(noteID, span, obsType, code))
 			outD.close()
 			outP.close()
 			outX.close()

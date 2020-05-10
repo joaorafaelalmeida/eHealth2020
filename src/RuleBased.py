@@ -16,7 +16,7 @@ class RuleBased():
 		for docId in dataset["es"]:
 			results[docId] = []
 			note =  dataset["es"][docId]
-			note = note.replace(".", " ")
+			#note = note.replace(".", " ")
 			for term in gs:
 				spanStart = note.find(term)
 				if spanStart >= 0:#muito incompleto
